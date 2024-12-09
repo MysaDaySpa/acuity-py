@@ -21,6 +21,14 @@ class AcuityScheduling:
             path = path[1:]
         url = f"{self.url_base}/api/v1/{path}"
 
+        default_options = {
+            'json': True,
+            'username': self.user_id,
+            'password': self.api_key
+        }
+
+        return self._request(url, options | default_options)
+
     def _request(self, url, options):
         # Set the defaults
         default_options = {
